@@ -45,8 +45,8 @@ class Game{
                  var y=200;
                  var index =0;
                  drawSprites();
+                 var display_position = 50;
                  for(var plr in allPlayers){
-                    
                     
                      index = index+1;
                      x = 500-allPlayers[plr].distance;
@@ -57,14 +57,21 @@ class Game{
                        
                      if(index === player.index){
                          
-                         fill("black");
+                         fill("beige");
+                         strokeWeight(5);
+                         stroke("black");
                          textSize(25);
                          text(allPlayers[plr].name ,x-25,y+25);
-
                          
                      }
                     
-                     
+                     display_position += 40;
+                     fill("beige");
+                     strokeWeight(5);
+                     stroke("black");
+                     textSize(25);
+                     text(allPlayers[plr].name + "'s Score : " + allPlayers[plr].score, 50, display_position);
+
                  
                  }
                 
@@ -100,10 +107,20 @@ class Game{
                      
                  }
                  
-                  if (player.index !== null) {
-                     //fill code here, to destroy the objects.
+                  if (player.index !== null && fruitGroup.isTouching(player1)) {
+                     fruitGroup.destroyEach();
+                     player.score +=2;
+                     player.update();
                   }
-                
+                  if (player.index !== null && fruitGroup.isTouching(player2)) {
+                    fruitGroup.destroyEach();
+                    player.score +=2;
+                    player.update();
+                 }
+                  
+
+
+                  
 
          
          
