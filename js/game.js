@@ -107,16 +107,16 @@ class Game{
                      
                  }
                  
-                  if (player.index !== null && fruitGroup.isTouching(player1)) {
-                     fruitGroup.destroyEach();
-                     player.score +=2;
-                     player.update();
+                  if (player.index !== null) {
+                    for (var i = 0; i < fruitGroup.length; i++){
+                        if (fruitGroup.get(i).isTouching(players)){
+                            fruitGroup.get(i).destroy();
+                            player.score +=1;
+                            player.update();
+                        }
+                    } 
+                    
                   }
-                  if (player.index !== null && fruitGroup.isTouching(player2)) {
-                    fruitGroup.destroyEach();
-                    player.score +=2;
-                    player.update();
-                 }
                   
 
 
